@@ -195,16 +195,16 @@ is used to generate the APB peripheral select lines.
  
 ## Read and Write Transfers
 
-### 
+### Single Read Transfer
 <img width="390" height="335" alt="Screenshot 2025-08-31 222801" src="https://github.com/user-attachments/assets/3e047179-7fe4-41b2-b5ad-d0377ec1dd69" />
 
-###
+### Single Write Transfer
 <img width="403" height="343" alt="Screenshot 2025-08-31 222751" src="https://github.com/user-attachments/assets/0fc03d58-e320-4214-94ca-d8af0bab5b0a" />
 
-###  
+###  Burst of Read Transfers
 <img width="455" height="337" alt="Screenshot 2025-08-31 222807" src="https://github.com/user-attachments/assets/15e8fedf-5fd6-4bcb-8cb4-c2c790492b4f" />
 
-### Burst od Write Transfers
+### Burst of Write Transfers
 <img width="483" height="307" alt="Screenshot 2025-08-31 222829" src="https://github.com/user-attachments/assets/8a3cfd93-b930-4916-9d14-f73af69c9b8f" />
 
 ### Burst Transfer (Wrap)
@@ -215,7 +215,50 @@ is used to generate the APB peripheral select lines.
 
 ---
 
+## Project Structure
+- **AHB_Master.v** – AHB bus master module; initiates read/write transfers.
+- **AHB_SLAVE_interface.v** – AHB slave interface module; captures address, control, and data signals.
+- **APB_Interface.v** – APB bus interface; drives APB peripheral access.
+- **APB_controller.v** – Implements the finite-state machine (FSM) that sequences APB transfers.
+- **Bridge_Top.v** – Top-level integration of AHB master, bridge, and APB modules.
+- **LICENSE** – MIT license.
+- **README.md** – This documentation.
 
+---
 
+##  How It Works (Block Flow)
 
+1. **AHB Master** initiates read/write with address and control signals.
+2. **AHB Slave Interface** captures these signals and registers them for the bridge.
+3. **Bridge FSM (in APB_Controller)**:
+   - Detects pending operations via handshaking flags.
+   - Initiates APB cycle (setup + access phases); waits for `PREADY`.
+   - Returns response back to the AHB side when complete.
+4. **APB Interface** coordinates actual transfer to APB peripheral.
+5. **Bridge Top** ties everything together, wiring signals and managing resets/clocks.
+   
+ ---
 
+## 🛠️ Tools & Technologies  
+
+<p align="center">
+  <img src="https://img.shields.io/badge/HDL-Verilog-blue?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Simulator-ModelSim-green?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/FPGA%20Tool-Quartus%20Prime-orange?style=for-the-badge" />
+</p>
+
+---
+
+## Schematic 
+### Top Level
+<img width="1909" height="1078" alt="Screenshot 2025-04-05 183559" src="https://github.com/user-attachments/assets/917320ae-0039-4363-93be-33a84e807023" />
+
+### AHB Slave
+<img width="1921" height="1141" alt="Screenshot 2025-04-05 183651" src="https://github.com/user-attachments/assets/5509dbbb-ac8d-4aa8-922e-23babe9c5199" />
+
+### APB Controller
+<img width="542" height="1146" alt="Screenshot 2025-04-05 183713" src="https://github.com/user-attachments/assets/5a387ec4-4f63-4ec2-b062-7ce309e6cebe" />
+
+---
+
+## Simulation Results
