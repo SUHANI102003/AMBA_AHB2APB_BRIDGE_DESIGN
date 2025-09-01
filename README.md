@@ -240,13 +240,13 @@ is used to generate the APB peripheral select lines.
 
 ## Schematic 
 ### Top Level
-<img width="1909" height="1078" alt="Screenshot 2025-04-05 183559" src="https://github.com/user-attachments/assets/917320ae-0039-4363-93be-33a84e807023" />
+<img width="1909" height="1000" alt="Screenshot 2025-04-05 183559" src="https://github.com/user-attachments/assets/917320ae-0039-4363-93be-33a84e807023" />
 
 ### AHB Slave
-<img width="1921" height="1141" alt="Screenshot 2025-04-05 183651" src="https://github.com/user-attachments/assets/5509dbbb-ac8d-4aa8-922e-23babe9c5199" />
+<img width="1921" height="1000" alt="Screenshot 2025-04-05 183651" src="https://github.com/user-attachments/assets/5509dbbb-ac8d-4aa8-922e-23babe9c5199" />
 
 ### APB Controller
-<img width="542" height="1146" alt="Screenshot 2025-04-05 183713" src="https://github.com/user-attachments/assets/5a387ec4-4f63-4ec2-b062-7ce309e6cebe" />
+<img width="542" height="800" alt="Screenshot 2025-04-05 183713" src="https://github.com/user-attachments/assets/5a387ec4-4f63-4ec2-b062-7ce309e6cebe" />
 
 ---
 
