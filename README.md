@@ -1,6 +1,6 @@
-<p align="center">
-  <h1>🚀 AMBA AHB-to-APB Bridge Design</h1>
-</p>
+
+  <h1 align = "center">🚀 AMBA AHB-to-APB Bridge Design</h1>
+
 
 <p align="center">
   <img src="https://img.shields.io/badge/Language-Verilog-blue?style=for-the-badge" />
