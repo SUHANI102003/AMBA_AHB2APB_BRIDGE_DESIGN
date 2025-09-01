@@ -14,8 +14,8 @@ integer i,j;
         begin
             Hwrite = 1;
             Htrans = 2'b10;
-            Hsize = 3'b000;
-            Hburst = 3'b000;
+            Hsize = 3'b000; // byte
+            Hburst = 3'b000; // single transfer
             Hreadyin = 1;
             Haddr = 32'h8000_0001;
         end
@@ -37,7 +37,7 @@ task single_read();
             Hwrite = 0;
             Htrans = 2'b10;
             Hsize = 3'b000;
-            Hburst = 3'b000;
+            Hburst = 3'b000;  // single transfer
             Hreadyin = 1;
             Haddr = 32'h8000_0001;
         end
@@ -57,8 +57,8 @@ endtask
       begin
       Hwrite = 1'b1;
       Htrans = 2'd2;
-      Hsize = 0;
-      Hburst = 3'd3;
+      Hsize = 0;       // byte
+      Hburst = 3'd3;  // INCR4
       Hreadyin = 1;
       Haddr = 32'h8000_0001;
    end
@@ -92,25 +92,27 @@ task burst_read();
             @(posedge Hclk) #1;
             Hwrite = 1'b0; // Read operation
             Htrans = 2'b10;
-            Hsize = 1;
-            Hburst = 3;
+            Hsize = 1;  // halfword
+            Hburst = 2; // WRAP4
             Hreadyin = 1;
             Haddr = 32'h8000_0048; // Adjusted read address
 
             @(posedge Hclk) #1;
             Htrans = 2'b11;
             Haddr = {Haddr[31:3], Haddr[2:1] + 1'b1, Haddr[0]};
+            Hwdata = {$random} % 256;
 
             for (j = 0; j < 2; j = j + 1) begin
                 @(posedge Hclk) #1;
                 Htrans = 2'b11;
                 Haddr = {Haddr[31:3], Haddr[2:1] + 1'b1, Haddr[0]};
+                Hwdata = {$random} % 256;
             end
 
             @(posedge Hclk) #1;
             Htrans = 2'b00;
+            Hwdata = ($random) % 256;
         end
     endtask
 
 endmodule
-
