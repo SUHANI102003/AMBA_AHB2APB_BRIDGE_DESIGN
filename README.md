@@ -200,7 +200,7 @@ is used to generate the APB peripheral select lines.
 <img width="454" height="302" alt="Screenshot 2025-08-31 222124" src="https://github.com/user-attachments/assets/054357b2-f4a1-44bb-88ac-cfd3a670167e" />
 
 ### Burst Transfer (Increment)
-<img width="860" height="490" alt="Screenshot 2025-08-31 222116" src="https://github.com/user-attachments/assets/4996d049-2191-4839-a4b6-2086e1e7b45b" />
+<img width="4500" height="302" alt="Screenshot 2025-08-31 222116" src="https://github.com/user-attachments/assets/4996d049-2191-4839-a4b6-2086e1e7b45b" />
 
 ---
 
