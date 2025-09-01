@@ -99,7 +99,7 @@ begin
 end
 
 // Implementing valid logic
-always @(Hreadyin,Haddr,Htrans,Hresetn)
+always @(*)
 begin
 	
 	if (Hresetn && Hreadyin && (Haddr>=32'h8000_0000 || Haddr<32'h8C00_0000) && (Htrans==2'b10 || Htrans==2'b11) )
@@ -113,4 +113,5 @@ assign Hrdata = Prdata;
 assign Hresp=2'b00;
 
 endmodule
+
 
