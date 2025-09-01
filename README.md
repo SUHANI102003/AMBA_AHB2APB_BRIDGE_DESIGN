@@ -204,15 +204,16 @@ is used to generate the APB peripheral select lines.
 
 ---
 
-## Project Structure
-- **AHB_Master.v** – AHB bus master module; initiates read/write transfers.
-- **AHB_SLAVE_interface.v** – AHB slave interface module; captures address, control, and data signals.
-- **APB_Interface.v** – APB bus interface; drives APB peripheral access.
-- **APB_controller.v** – Implements the finite-state machine (FSM) that sequences APB transfers.
-- **Bridge_Top.v** – Top-level integration of AHB master, bridge, and APB modules.
-- **LICENSE** – MIT license.
-- **README.md** – This documentation.
-
+## 📁 Project Structure
+```
+**AHB_Master.v** – AHB bus master module; initiates read/write transfers.
+**AHB_SLAVE_interface.v** – AHB slave interface module; captures address, control, and data signals.
+**APB_Interface.v** – APB bus interface; drives APB peripheral access.
+**APB_controller.v** – Implements the finite-state machine (FSM) that sequences APB transfers.
+**Bridge_Top.v** – Top-level integration of AHB master, bridge, and APB modules.
+**LICENSE** – MIT license.
+**README.md** – This documentation.
+```
 ---
 
 ##  How It Works (Block Flow)
