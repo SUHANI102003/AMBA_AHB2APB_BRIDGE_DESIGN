@@ -145,6 +145,9 @@ Bridge performs the following operations:-
 ## Working of AHB
 
 ### AHB Master
+A bus master is able to initiate read and write operations by 
+providing an address and control information. Only one bus 
+master is allowed to actively use the bus at any one time.
 
 1. Single Write
 - Places address (Haddr) on bus
