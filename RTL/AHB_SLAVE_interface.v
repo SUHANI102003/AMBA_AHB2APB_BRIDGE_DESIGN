@@ -102,7 +102,7 @@ end
 always @(*)
 begin
 	
-	if (Hresetn && Hreadyin && (Haddr>=32'h8000_0000 || Haddr<32'h8C00_0000) && (Htrans==2'b10 || Htrans==2'b11) )
+	if (Hresetn && Hreadyin && (Haddr>=32'h8000_0000 && Haddr<32'h8C00_0000) && (Htrans==2'b10 || Htrans==2'b11) )
 		valid=1'b1;
 	else
 		valid=1'b0;
@@ -113,5 +113,6 @@ assign Hrdata = Prdata;
 assign Hresp=2'b00;
 
 endmodule
+
 
 
