@@ -150,27 +150,27 @@ providing an address and control information. Only one bus
 master is allowed to actively use the bus at any one time.
 
 1. Single Write
-- Places address (Haddr) on bus
-- Sets Hwrite=1, Htrans=NONSEQ (2’b10)
-- On next clock: places data (Hwdata)
+  - Places address (Haddr) on bus
+  - Sets Hwrite=1, Htrans=NONSEQ (2’b10)
+  - On next clock: places data (Hwdata)
 
 2. Single Read
-- Places address on bus
-- Sets Hwrite=0, Htrans=NONSEQ
-- On next clock: Htrans=IDLE (2’b00)
-- Data should be captured from Hrdata (though your code doesn’t latch it explicitly).
+  - Places address on bus
+  - Sets Hwrite=0, Htrans=NONSEQ
+  - On next clock: Htrans=IDLE (2’b00)
+  - Data should be captured from Hrdata (though your code doesn’t latch it explicitly).
 
 3. Burst Write (Incrementing burst)
-- Starts with NONSEQ transfer, Hburst=3’b011 (INCR4)
-- Next transfers are SEQ (2’b11) with incremented address and new data each cycle.
-- Random data is driven.
-- Last cycle goes to IDLE.
+  - Starts with NONSEQ transfer, Hburst=3’b011 (INCR4)
+  - Next transfers are SEQ (2’b11) with incremented address and new data each cycle.
+  - Random data is driven.
+  - Last cycle goes to IDLE.
 
 4. Burst Read (Incrementing burst)
-- Similar to burst write but with Hwrite=0.
-- Sequential addresses are generated.
-- Data is expected to come from slave via Hrdata (but your code incorrectly still drives Hwdata in reads → looks like a mistake in modeling).
-
+  - Similar to burst write but with Hwrite=0.
+  - Sequential addresses are generated.
+  - Data is expected to come from slave via Hrdata.
+    
 ---
 
 ### AHB Slave Interface
