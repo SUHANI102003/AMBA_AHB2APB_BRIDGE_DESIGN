@@ -172,9 +172,6 @@ master is allowed to actively use the bus at any one time.
    - Sequential addresses are generated with `SEQ` transfers  
    - Data is expected to come from slave via `Hrdata`  
 
-    
----
-
 ### AHB Slave Interface
 
 An AHB bus slave responds to transfers initiated by bus masters within the system. The 
