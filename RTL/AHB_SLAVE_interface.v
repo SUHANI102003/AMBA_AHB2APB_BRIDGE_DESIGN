@@ -73,8 +73,8 @@ always@(posedge Hclk)
 begin
 	if(!Hresetn)
 	begin
-		Hwritereg <= 32'b0;
-		Hwritereg1 <= 32'b0;
+		Hwritereg <= 1'b0;
+		Hwritereg1 <= 1'b0;
 	end
 	else 
 	begin
@@ -113,3 +113,4 @@ assign Hrdata = Prdata;
 assign Hresp=2'b00;
 
 endmodule
+
