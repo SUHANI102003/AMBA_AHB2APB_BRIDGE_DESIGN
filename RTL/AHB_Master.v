@@ -100,19 +100,17 @@ task burst_read();
             @(posedge Hclk) #1;
             Htrans = 2'b11;
             Haddr = {Haddr[31:3], Haddr[2:1] + 1'b1, Haddr[0]};
-            Hwdata = {$random} % 256;
 
             for (j = 0; j < 2; j = j + 1) begin
                 @(posedge Hclk) #1;
                 Htrans = 2'b11;
                 Haddr = {Haddr[31:3], Haddr[2:1] + 1'b1, Haddr[0]};
-                Hwdata = {$random} % 256;
             end
 
             @(posedge Hclk) #1;
             Htrans = 2'b00;
-            Hwdata = ($random) % 256;
         end
     endtask
 
 endmodule
+
