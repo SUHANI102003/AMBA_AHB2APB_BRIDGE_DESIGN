@@ -258,3 +258,28 @@ Additionally, it generates read data (Prdata) during an APB read transaction.
 <p align="center">
 <img width="1000" height="1000" src = "https://github.com/SUHANI102003/AMBA_AHB2APB_BRIDGE_DESIGN/blob/main/SIM/APB_controller_sim.png" />
 </p>
+
+### APB Interface
+<p align="center">
+<img width="1000" height="1000" src = "https://github.com/SUHANI102003/AMBA_AHB2APB_BRIDGE_DESIGN/blob/main/SIM/APB_Interface_sim.png" />
+</p>
+
+## Single Write
+<p align="center">
+<img width="1000" height="1000" src = "https://github.com/SUHANI102003/AMBA_AHB2APB_BRIDGE_DESIGN/blob/main/SIM/single_write.png" />
+</p>
+
+## SingleRead
+<p align="center">
+<img width="1000" height="1000" src = "https://github.com/SUHANI102003/AMBA_AHB2APB_BRIDGE_DESIGN/blob/main/SIM/single_read.png" />
+</p>
+
+## Burst Write
+<p align="center">
+<img width="1000" height="1000" src = "https://github.com/SUHANI102003/AMBA_AHB2APB_BRIDGE_DESIGN/blob/main/SIM/burst_write.png" />
+</p>
+
+---
+
+## Referances
+[ARM AMBA Specification Rev 2.0](https://developer.arm.com/documentation/ihi0011/latest/)
