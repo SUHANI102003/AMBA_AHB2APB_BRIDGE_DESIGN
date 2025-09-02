@@ -44,7 +44,9 @@ elements that are involved in the majority of transfers. Also located on the
 high-performance bus is a bridge to the lower bandwidth APB, where most of the 
 peripheral devices in the system are located
 
-<img width="1002" height="382" alt="Screenshot 2025-08-31 180408" src="https://github.com/user-attachments/assets/0dfc8a16-0e95-4bd5-8b3a-e06ca6c91a5f" />
+<p align="center">
+<img width="700" height="382" alt="Screenshot 2025-08-31 180408" src="https://github.com/user-attachments/assets/0dfc8a16-0e95-4bd5-8b3a-e06ca6c91a5f" />
+</p>
 
 ---
 
@@ -64,9 +66,9 @@ interfaces with low-power peripheral macrocell functions.
  * single-clock edge operation
 
 ### AHB Signals
-<img width="872" height="778" alt="Screenshot 2025-08-31 193720" src="https://github.com/user-attachments/assets/fa1942ae-a81e-4fe6-b079-238f1a056c30" />
+<img width="700" height="600" alt="Screenshot 2025-08-31 193720" src="https://github.com/user-attachments/assets/fa1942ae-a81e-4fe6-b079-238f1a056c30" />
 
-<img width="882" height="353" alt="Screenshot 2025-08-31 193752" src="https://github.com/user-attachments/assets/4374f629-3c75-4226-b879-5ac48e0dcd56" />
+<img width="700" height="300" alt="Screenshot 2025-08-31 193752" src="https://github.com/user-attachments/assets/4374f629-3c75-4226-b879-5ac48e0dcd56" />
 
 ---
 
@@ -83,7 +85,7 @@ version of the system bus.
  * Suitable for many peripherals
 
 ### APB Signals
-<img width="894" height="595" alt="Screenshot 2025-08-31 193818" src="https://github.com/user-attachments/assets/9c7c0350-f00e-4d97-9560-076fcc42b744" />
+<img width="700" height="400" alt="Screenshot 2025-08-31 193818" src="https://github.com/user-attachments/assets/9c7c0350-f00e-4d97-9560-076fcc42b744" />
 
 ---
 
@@ -102,31 +104,26 @@ It takes AHB transactions (read/write), converts them into APB transactions, and
 
 ### 🏗️ Functions of the Bridge
 
-- Captures AHB address, control, and data signals.
-- Converts AHB transfer protocol into APB’s simple setup-access cycle.
-- Handles synchronization if AHB and APB run on different clocks (HCLK vs PCLK).
-- Generates handshaking signals (PENABLE, PWRITE, PREADY) for APB.
-- Returns response back to the AHB master once APB transfer is done.
-
---- 
-
-## Block Diagram of AHB2APB Bridge
-
-<img width="541" height="372" alt="Screenshot 2025-08-31 194814" src="https://github.com/user-attachments/assets/6f9467e2-5b38-4fad-be9c-a96a86a8c351" />
-
-### Working
-Bridge performs the following operations:-
 - Latches the address and holds it valid throughout the transfer.
 - Decodes the address and generates a peripheral select, PSELx. Only one select signal can be achieved during a transfer.
 - Drives the data onto the APB for write transfer.
 - Drives the APB data onto a system bus for read transfer.
 - Generates a timing strobe, PENABLE, for the transfer.
   
+
+--- 
+
+## Block Diagram of AHB2APB Bridge
+<p align="center">
+<img width="541" height="372" alt="Screenshot 2025-08-31 194814" src="https://github.com/user-attachments/assets/6f9467e2-5b38-4fad-be9c-a96a86a8c351" />
+</p>
+
 ---
 
 ## Block Diagram showing Connections in Bridge Top
-
+<p align="center">
 <img width="811" height="413" alt="Screenshot 2025-08-31 195304" src="https://github.com/user-attachments/assets/35c7a27f-b4dc-4db8-825e-40649bda529e" />
+</p>
 
 ---
 
@@ -241,3 +238,18 @@ This module implements a finite-state machine that takes qualified AHB inputs (v
 ---
 
 ## Simulation Results
+
+### AHB Master
+<p align="center">
+<img width="1000" height="1000" src = "https://github.com/SUHANI102003/AMBA_AHB2APB_BRIDGE_DESIGN/blob/main/SIM/AHB_Master_waveform.png" />
+</p>
+
+### AHB Slave Interface
+<p align="center">
+<img width="1000" height="1000" src = "https://github.com/SUHANI102003/AMBA_AHB2APB_BRIDGE_DESIGN/blob/main/SIM/AHB_Slave_Interface_sim.png" />
+</p>
+
+### APB Controller
+<p align="center">
+<img width="1000" height="1000" src = "https://github.com/SUHANI102003/AMBA_AHB2APB_BRIDGE_DESIGN/blob/main/SIM/APB_controller_sim.png" />
+</p>
