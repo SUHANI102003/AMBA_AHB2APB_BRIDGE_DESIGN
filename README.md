@@ -211,6 +211,11 @@ This module implements a finite-state machine that takes qualified AHB inputs (v
 <img width="656" height="396" alt="Screenshot 2025-08-31 222741" src="https://github.com/user-attachments/assets/3f6bd9e6-a0ed-4b59-8be1-9eae5befef37" />
 
 ### APB Interface
+This module is basically acting as a pass-through interface between the AHB-to-APB bridge and the APB slave.
+
+It forwards all input signals (like Pwrite, Penable, Pselx, Paddr, Pwdata) directly to corresponding outputs.
+
+Additionally, it generates read data (Prdata) during an APB read transaction.
 
 ---
  
