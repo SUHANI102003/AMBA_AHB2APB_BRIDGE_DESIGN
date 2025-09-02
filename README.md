@@ -255,3 +255,20 @@ An **AHB-to-APB Bridge** is a hardware module that connects the high-speed AHB b
 
 ## 📚 References  
 [ARM AMBA Specification Rev 2.0](https://developer.arm.com/documentation/ihi0011/latest/)  
+
+---
+
+## 🤝 Contribution  
+
+Contributions are always welcome!  
+
+- Fork the repo 🍴  
+- Create a new branch 🌿  
+- Commit your changes 💡  
+- Open a Pull Request 🚀  
+
+---
+
+## 📜 License  
+
+This project is licensed under the **MIT License**.  
