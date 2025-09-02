@@ -1,6 +1,5 @@
 
-  <h1 align = "center">🚀 AMBA AHB-to-APB Bridge Design</h1>
-
+  <h1 align="center">🚀 AMBA AHB-to-APB Bridge Design</h1>
 
 <p align="center">
   <img src="https://img.shields.io/badge/Language-Verilog-blue?style=for-the-badge" />
@@ -8,126 +7,124 @@
   <img src="https://img.shields.io/badge/Bus%20Bridge-AHB2APB-green?style=for-the-badge" />
 </p>
 
-
 ---
 
 ## 📖 Project Overview  
 
 This project implements an **AHB-to-APB Bridge** in **Verilog HDL**, which connects the **high-performance AHB bus** with the **low-power APB bus** inside a System-on-Chip (SoC).  
 
-- The AHB bus is typically used by **CPUs, DMA, and memory** for fast transactions.  
-- The APB bus is used by **peripherals like UART, GPIO, Timers** that don’t need high bandwidth.  
-- The **bridge** acts as a translator, handling protocol differences and synchronizing transfers across clock domains.  
+- ⚡ The AHB bus is typically used by **CPUs, DMA, and memory** for fast transactions.  
+- 🔌 The APB bus is used by **peripherals like UART, GPIO, Timers** that don’t need high bandwidth.  
+- 🔄 The **bridge** acts as a translator, handling protocol differences and synchronizing transfers across clock domains.  
 
 It ensures **seamless data transfer** between high-speed and low-speed components, enabling efficient SoC design.  
 
 ---
 
 ## 🧩 What is AMBA?  
- The Advanced Microcontroller Bus Architecture (AMBA) specification defines an 
-on-chip communications standard for designing high-performance embedded 
-microcontrollers. 
+The **Advanced Microcontroller Bus Architecture (AMBA)** specification defines an on-chip communications standard for designing high-performance embedded microcontrollers.  
 
-Three distinct buses are defined within the AMBA specification: 
-- the Advanced High-performance Bus (AHB)
-- the Advanced System Bus (ASB)
-- the Advanced Peripheral Bus (APB).
+Three distinct buses are defined within the AMBA specification:  
+- 🟢 **AHB (Advanced High-performance Bus)**  
+- 🟡 **ASB (Advanced System Bus)**  
+- 🔵 **APB (Advanced Peripheral Bus)**  
 
 ---
 
-## A typical AMBA-based microcontroller
- An AMBA-based microcontroller typically consists of a high-performance system 
-backbone bus (AMBA AHB or AMBA ASB), able to sustain the external memory 
-bandwidth, on which the CPU, on-chip memory and other Direct Memory Access 
-(DMA) devices reside. This bus provides a high-bandwidth interface between the 
-elements that are involved in the majority of transfers. Also located on the 
-high-performance bus is a bridge to the lower bandwidth APB, where most of the 
-peripheral devices in the system are located
+## 🖥️ A Typical AMBA-based Microcontroller  
+
+An AMBA-based microcontroller typically consists of a **high-performance system backbone bus** (AMBA AHB or AMBA ASB), able to sustain external memory bandwidth.  
+
+- CPU, on-chip memory, and DMA devices reside on this high-performance bus.  
+- A bridge connects this backbone bus to the **lower-bandwidth APB**, where most peripheral devices exist.  
 
 <p align="center">
-<img width="700" height="382" alt="Screenshot 2025-08-31 180408" src="https://github.com/user-attachments/assets/0dfc8a16-0e95-4bd5-8b3a-e06ca6c91a5f" />
+<img width="700" height="382" src="https://github.com/user-attachments/assets/0dfc8a16-0e95-4bd5-8b3a-e06ca6c91a5f" />
 </p>
 
 ---
 
-## Advanced High-performance Bus (AHB)
-The AMBA AHB is for high-performance, high clock frequency system modules.
-The AHB acts as the high-performance system backbone bus. AHB supports the 
-efficient connection of processors, on-chip memories and off-chip external memory 
-interfaces with low-power peripheral macrocell functions. 
+## ⚡ Advanced High-performance Bus (AHB)  
 
-### Features
- * High performance
- * Pipelined operation
- * Multiple bus masters
- * Burst transfers
- * Split transactions
- * wider data bus configurations (64/128 bits)
- * single-clock edge operation
+The **AMBA AHB** is for **high-performance, high-frequency system modules**.  
+It serves as the backbone bus to connect processors, memories, and external memory interfaces with low-power peripherals.  
 
-### AHB Signals
-<img width="700" height="600" alt="Screenshot 2025-08-31 193720" src="https://github.com/user-attachments/assets/fa1942ae-a81e-4fe6-b079-238f1a056c30" />
+### ✨ Features
+- High performance  
+- Pipelined operation  
+- Multiple bus masters  
+- Burst transfers  
+- Split transactions  
+- Wider data bus configurations (64/128 bits)  
+- Single-clock edge operation  
 
-<img width="700" height="300" alt="Screenshot 2025-08-31 193752" src="https://github.com/user-attachments/assets/4374f629-3c75-4226-b879-5ac48e0dcd56" />
+### 📡 AHB Signals
+<p align="center">
+<img width="700" height="600" src="https://github.com/user-attachments/assets/fa1942ae-a81e-4fe6-b079-238f1a056c30" />
+</p>
 
----
-
-## Advanced Peripheral Bus (APB)
-The AMBA APB is for low-power peripherals.
-AMBA APB is optimized for minimal power consumption and reduced interface 
-complexity to support peripheral functions. APB can be used in conjunction with either 
-version of the system bus.
-
-### Features
- * Low power
- * Latched address and control
- * Simple interface
- * Suitable for many peripherals
-
-### APB Signals
-<img width="700" height="400" alt="Screenshot 2025-08-31 193818" src="https://github.com/user-attachments/assets/9c7c0350-f00e-4d97-9560-076fcc42b744" />
+<p align="center">
+<img width="700" height="300" src="https://github.com/user-attachments/assets/4374f629-3c75-4226-b879-5ac48e0dcd56" />
+</p>
 
 ---
 
-## AHB to APB Bridge
-An AHB-to-APB Bridge is a hardware module that connects the high-speed AHB bus to the low-speed APB bus. The AHB to APB bridge interface is an AHB slave.
-It takes AHB transactions (read/write), converts them into APB transactions, and ensures proper synchronization between their different clock domains.
+## 🔌 Advanced Peripheral Bus (APB)  
 
+The **AMBA APB** is optimized for **low power consumption** and **simplified interface complexity** for peripherals.  
 
-### ⚙️ Why do we need it?
+### ✨ Features
+- Low power  
+- Latched address and control  
+- Simple interface  
+- Suitable for many peripherals  
 
-- The AHB bus is fast, pipelined, and used for CPU ↔ Memory/DMA communication.
-- The APB bus is slow, simple, and used for peripherals like UART, SPI, GPIO.
-- These buses don’t “speak the same language” — AHB supports burst and pipelined transfers, but APB uses a simple setup–access protocol.
-- The bridge solves this mismatch by adapting signals, timing, and handshaking.
-- As the APB is pipelined, then wait states are added during transfers to and from the APB where the AHB is required to wait for the APB.
+### 📡 APB Signals
+<p align="center">
+<img width="700" height="400" src="https://github.com/user-attachments/assets/9c7c0350-f00e-4d97-9560-076fcc42b744" />
+</p>
+
+---
+
+## 🔄 AHB to APB Bridge  
+
+An **AHB-to-APB Bridge** is a hardware module that connects the high-speed AHB bus to the low-speed APB bus.  
+
+- Acts as an **AHB slave**  
+- Converts AHB transactions (read/write) into APB transactions  
+- Synchronizes between different clock domains  
+
+### ⚙️ Why Do We Need It?
+- AHB = fast, pipelined, CPU ↔ Memory/DMA transfers  
+- APB = slow, simple, UART/SPI/GPIO transfers  
+- They don’t “speak the same language” → bridge adapts signals & timing  
+- Adds wait states to synchronize transfers  
 
 ### 🏗️ Functions of the Bridge
+- Latches and holds address throughout transfer  
+- Decodes address → generates **PSELx** (only one active at a time)  
+- Drives data for **write transfer**  
+- Returns APB data on **read transfer**  
+- Generates **PENABLE strobe**  
 
-- Latches the address and holds it valid throughout the transfer.
-- Decodes the address and generates a peripheral select, PSELx. Only one select signal can be achieved during a transfer.
-- Drives the data onto the APB for write transfer.
-- Drives the APB data onto a system bus for read transfer.
-- Generates a timing strobe, PENABLE, for the transfer.
-  
+---
 
---- 
-
-## Block Diagram of AHB2APB Bridge
+## 📊 Block Diagram of AHB2APB Bridge  
 <p align="center">
-<img width="541" height="372" alt="Screenshot 2025-08-31 194814" src="https://github.com/user-attachments/assets/6f9467e2-5b38-4fad-be9c-a96a86a8c351" />
+<img width="541" height="372" src="https://github.com/user-attachments/assets/6f9467e2-5b38-4fad-be9c-a96a86a8c351" />
 </p>
 
 ---
 
-## Block Diagram showing Connections in Bridge Top
+## 🔗 Block Diagram Showing Connections in Bridge Top  
 <p align="center">
-<img width="811" height="413" alt="Screenshot 2025-08-31 195304" src="https://github.com/user-attachments/assets/35c7a27f-b4dc-4db8-825e-40649bda529e" />
+<img width="811" height="413" src="https://github.com/user-attachments/assets/35c7a27f-b4dc-4db8-825e-40649bda529e" />
 </p>
 
 ---
 
-## 📁 Project Structure
+## 📁 Project Structure  
+
 ```
 **AHB_Master.v** – AHB bus master module; initiates read/write transfers.
 **AHB_SLAVE_interface.v** – AHB slave interface module; captures address, control, and data signals.
@@ -139,86 +136,60 @@ It takes AHB transactions (read/write), converts them into APB transactions, and
 ```
 ---
 
-##  How It Works (Block Flow)
-
-1. **AHB Master** initiates read/write with address and control signals.
-2. **AHB Slave Interface** captures these signals and registers them for the bridge.
-3. **Bridge FSM (in APB_Controller)**:
-   - Detects pending operations via handshaking flags.
-   - Initiates APB cycle (setup + access phases); waits for `PREADY`.
-   - Returns response back to the AHB side when complete.
-4. **APB Interface** coordinates actual transfer to APB peripheral.
-5. **Bridge Top** ties everything together, wiring signals and managing resets/clocks.
-   
- ---
-
-## Working of AHB
-
-### AHB Master
-A bus master is able to initiate read and write operations by 
-providing an address and control information. Only one bus 
-master is allowed to actively use the bus at any one time.
-
-1. **Single Write**
-   - Places address (`Haddr`) on bus  
-   - Sets `Hwrite = 1`, `Htrans = NONSEQ (2’b10)`  
-   - On next clock: places data (`Hwdata`)  
-
-2. **Single Read**
-   - Places address on bus  
-   - Sets `Hwrite = 0`, `Htrans = NONSEQ`  
-   - On next clock: `Htrans = IDLE (2’b00)`  
-   - Data should be captured from `Hrdata` *(though code doesn’t latch it explicitly)*  
-
-3. **Burst Write (Incrementing Burst)**
-   - Starts with `NONSEQ` transfer, `Hburst = 3’b011 (INCR4)`  
-   - Next transfers are `SEQ (2’b11)` with incremented address and new data each cycle  
-   - Random data is driven  
-   - Last cycle goes to `IDLE`  
-
-4. **Burst Read (Incrementing Burst)**
-   - Starts with `NONSEQ` transfer, `Hwrite = 0`  
-   - `Hburst = 3’b011 (INCR4)`  
-   - Sequential addresses are generated with `SEQ` transfers  
-   - Data is expected to come from slave via `Hrdata`  
-
-### AHB Slave Interface
-
-An AHB bus slave responds to transfers initiated by bus masters within the system. The 
-slave uses a HSELx select signal from the decoder to determine when it should respond 
-to a bus transfer. All other signals required for the transfer, such as the address and 
-control information, will be generated by the bus master. 
-
-- pipelines AHB address/data/write for timing alignment,
-- decodes the address to select a peripheral,
-- qualifies a transfer with a valid flag,
-- passes APB read data (Prdata) back to AHB as Hrdata,
-- returns a fixed OKAY response (Hresp=2’b00).
 
 ---
 
+## 🔄 How It Works (Block Flow)  
 
-## Working of APB
-
-### APB Controller
-
-The AHB to APB bridge comprises a state machine, which is used to control the 
-generation of the APB and AHB output signals, and the address decoding logic which 
-is used to generate the APB peripheral select lines.
-
-This module implements a finite-state machine that takes qualified AHB inputs (valid, pipelined Haddr/Hwdata/Hwritereg, tempselx) and generates APB control signals (Pselx, Paddr, Pwdata, Pwrite, Penable) while driving Hreadyout back to the AHB master to indicate transfer completion.
-  
-<img width="656" height="396" alt="Screenshot 2025-08-31 222741" src="https://github.com/user-attachments/assets/3f6bd9e6-a0ed-4b59-8be1-9eae5befef37" />
-
-### APB Interface
-This module is basically acting as a pass-through interface between the AHB-to-APB bridge and the APB slave.
-
-It forwards all input signals (like Pwrite, Penable, Pselx, Paddr, Pwdata) directly to corresponding outputs.
-
-Additionally, it generates read data (Prdata) during an APB read transaction.
+1. **AHB Master** initiates transfers (address + control).  
+2. **AHB Slave Interface** captures & registers signals.  
+3. **Bridge FSM (APB_Controller)**  
+   - Detects pending ops  
+   - Initiates APB cycle (setup + access)  
+   - Waits for `PREADY`  
+   - Returns response to AHB side  
+4. **APB Interface** → transfers to peripheral.  
+5. **Bridge Top** ties everything together.  
 
 ---
- 
+
+## 🖧 Working of AHB  
+
+### 🟢 AHB Master  
+- Initiates **read/write** by placing address + control signals  
+- Supports **single** and **burst** transfers  
+
+1. **Single Write** → Address → Hwrite=1 → Data  
+2. **Single Read** → Address → Hwrite=0 → Capture Hrdata  
+3. **Burst Write** → INCR4 bursts with sequential addresses & data  
+4. **Burst Read** → INCR4 bursts → sequential addresses → read data  
+
+### 🔵 AHB Slave Interface  
+- Responds to transfers with `HSELx`  
+- Pipelines AHB address/data/write  
+- Decodes address → select peripheral  
+- Returns **Hrdata** from APB read  
+- Always returns `Hresp = OKAY`  
+
+---
+
+## 🖧 Working of APB  
+
+### 🟣 APB Controller  
+- FSM to control APB signals & timing  
+- Decodes AHB signals → drives Pselx, Paddr, Pwdata, Pwrite, Penable  
+- Generates `Hreadyout`  
+
+<p align="center">
+<img width="656" height="396" src="https://github.com/user-attachments/assets/3f6bd9e6-a0ed-4b59-8be1-9eae5befef37" />
+</p>
+
+### 🟤 APB Interface  
+- Pass-through between bridge & APB slave  
+- Forwards all signals  
+- Generates read data on APB read  
+
+---
 
 ## 🛠️ Tools & Technologies  
 
@@ -230,56 +201,57 @@ Additionally, it generates read data (Prdata) during an APB read transaction.
 
 ---
 
-## Schematic 
-### Top Level
-<img width="1000" height="800" alt="Screenshot 2025-04-05 183559" src="https://github.com/user-attachments/assets/917320ae-0039-4363-93be-33a84e807023" />
+## 📐 Schematic  
 
-### AHB Slave
-<img width="1000" height="800" alt="Screenshot 2025-04-05 183651" src="https://github.com/user-attachments/assets/5509dbbb-ac8d-4aa8-922e-23babe9c5199" />
+### 🔝 Top Level  
+<img width="1000" height="800" src="https://github.com/user-attachments/assets/917320ae-0039-4363-93be-33a84e807023" />
 
-### APB Controller
-<img width="542" height="800" alt="Screenshot 2025-04-05 183713" src="https://github.com/user-attachments/assets/5a387ec4-4f63-4ec2-b062-7ce309e6cebe" />
+### 🟢 AHB Slave  
+<img width="1000" height="800" src="https://github.com/user-attachments/assets/5509dbbb-ac8d-4aa8-922e-23babe9c5199" />
 
----
-
-## Simulation Results
-
-### AHB Master
-<p align="center">
-<img width="1000" height="1000" src = "https://github.com/SUHANI102003/AMBA_AHB2APB_BRIDGE_DESIGN/blob/main/SIM/AHB_Master_waveform.png" />
-</p>
-
-### AHB Slave Interface
-<p align="center">
-<img width="1000" height="1000" src = "https://github.com/SUHANI102003/AMBA_AHB2APB_BRIDGE_DESIGN/blob/main/SIM/AHB_Slave_Interface_sim.png" />
-</p>
-
-### APB Controller
-<p align="center">
-<img width="1000" height="1000" src = "https://github.com/SUHANI102003/AMBA_AHB2APB_BRIDGE_DESIGN/blob/main/SIM/APB_controller_sim.png" />
-</p>
-
-### APB Interface
-<p align="center">
-<img width="1000" height="1000" src = "https://github.com/SUHANI102003/AMBA_AHB2APB_BRIDGE_DESIGN/blob/main/SIM/APB_Interface_sim.png" />
-</p>
-
-## Single Write
-<p align="center">
-<img width="1000" height="1000" src = "https://github.com/SUHANI102003/AMBA_AHB2APB_BRIDGE_DESIGN/blob/main/SIM/single_write.png" />
-</p>
-
-## SingleRead
-<p align="center">
-<img width="1000" height="1000" src = "https://github.com/SUHANI102003/AMBA_AHB2APB_BRIDGE_DESIGN/blob/main/SIM/single_read.png" />
-</p>
-
-## Burst Write
-<p align="center">
-<img width="1000" height="1000" src = "https://github.com/SUHANI102003/AMBA_AHB2APB_BRIDGE_DESIGN/blob/main/SIM/burst_write.png" />
-</p>
+### 🔵 APB Controller  
+<img width="542" height="800" src="https://github.com/user-attachments/assets/5a387ec4-4f63-4ec2-b062-7ce309e6cebe" />
 
 ---
 
-## Referances
-[ARM AMBA Specification Rev 2.0](https://developer.arm.com/documentation/ihi0011/latest/)
+## 🧪 Simulation Results  
+
+### 🔹 AHB Master  
+<p align="center">
+<img width="1000" height="1000" src="https://github.com/SUHANI102003/AMBA_AHB2APB_BRIDGE_DESIGN/blob/main/SIM/AHB_Master_waveform.png" />
+</p>
+
+### 🔹 AHB Slave Interface  
+<p align="center">
+<img width="1000" height="1000" src="https://github.com/SUHANI102003/AMBA_AHB2APB_BRIDGE_DESIGN/blob/main/SIM/AHB_Slave_Interface_sim.png" />
+</p>
+
+### 🔹 APB Controller  
+<p align="center">
+<img width="1000" height="1000" src="https://github.com/SUHANI102003/AMBA_AHB2APB_BRIDGE_DESIGN/blob/main/SIM/APB_controller_sim.png" />
+</p>
+
+### 🔹 APB Interface  
+<p align="center">
+<img width="1000" height="1000" src="https://github.com/SUHANI102003/AMBA_AHB2APB_BRIDGE_DESIGN/blob/main/SIM/APB_Interface_sim.png" />
+</p>
+
+### 📝 Single Write  
+<p align="center">
+<img width="1000" height="1000" src="https://github.com/SUHANI102003/AMBA_AHB2APB_BRIDGE_DESIGN/blob/main/SIM/single_write.png" />
+</p>
+
+### 📝 Single Read  
+<p align="center">
+<img width="1000" height="1000" src="https://github.com/SUHANI102003/AMBA_AHB2APB_BRIDGE_DESIGN/blob/main/SIM/single_read.png" />
+</p>
+
+### 📝 Burst Write  
+<p align="center">
+<img width="1000" height="1000" src="https://github.com/SUHANI102003/AMBA_AHB2APB_BRIDGE_DESIGN/blob/main/SIM/burst_write.png" />
+</p>
+
+---
+
+## 📚 References  
+[ARM AMBA Specification Rev 2.0](https://developer.arm.com/documentation/ihi0011/latest/)  
