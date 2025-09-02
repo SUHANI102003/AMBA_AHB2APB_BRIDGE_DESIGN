@@ -213,8 +213,7 @@ This module implements a finite-state machine that takes qualified AHB inputs (v
   
 <img width="656" height="396" alt="Screenshot 2025-08-31 222741" src="https://github.com/user-attachments/assets/3f6bd9e6-a0ed-4b59-8be1-9eae5befef37" />
 
-### Peripheral memory map
-<img width="432" height="345" alt="Screenshot 2025-08-31 222653" src="https://github.com/user-attachments/assets/bb69f240-60d2-46dc-83f8-1c99b067a44e" />
+### APB Interface
 
 ---
  
