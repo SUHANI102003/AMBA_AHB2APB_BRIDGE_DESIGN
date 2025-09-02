@@ -142,6 +142,19 @@ Bridge performs the following operations:-
 ```
 ---
 
+##  How It Works (Block Flow)
+
+1. **AHB Master** initiates read/write with address and control signals.
+2. **AHB Slave Interface** captures these signals and registers them for the bridge.
+3. **Bridge FSM (in APB_Controller)**:
+   - Detects pending operations via handshaking flags.
+   - Initiates APB cycle (setup + access phases); waits for `PREADY`.
+   - Returns response back to the AHB side when complete.
+4. **APB Interface** coordinates actual transfer to APB peripheral.
+5. **Bridge Top** ties everything together, wiring signals and managing resets/clocks.
+   
+ ---
+
 ## Working of AHB
 
 ### AHB Master
@@ -205,42 +218,6 @@ This module implements a finite-state machine that takes qualified AHB inputs (v
 
 ---
  
-## Read and Write Transfers
-
-### Single Read Transfer
-<img width="390" height="335" alt="Screenshot 2025-08-31 222801" src="https://github.com/user-attachments/assets/3e047179-7fe4-41b2-b5ad-d0377ec1dd69" />
-
-### Single Write Transfer
-<img width="403" height="343" alt="Screenshot 2025-08-31 222751" src="https://github.com/user-attachments/assets/0fc03d58-e320-4214-94ca-d8af0bab5b0a" />
-
-###  Burst of Read Transfers
-<img width="455" height="337" alt="Screenshot 2025-08-31 222807" src="https://github.com/user-attachments/assets/15e8fedf-5fd6-4bcb-8cb4-c2c790492b4f" />
-
-### Burst of Write Transfers
-<img width="483" height="307" alt="Screenshot 2025-08-31 222829" src="https://github.com/user-attachments/assets/8a3cfd93-b930-4916-9d14-f73af69c9b8f" />
-
-### Burst Transfer (Wrap)
-<img width="454" height="302" alt="Screenshot 2025-08-31 222124" src="https://github.com/user-attachments/assets/054357b2-f4a1-44bb-88ac-cfd3a670167e" />
-
-### Burst Transfer (Increment)
-<img width="450" height="302" alt="Screenshot 2025-08-31 222116" src="https://github.com/user-attachments/assets/4996d049-2191-4839-a4b6-2086e1e7b45b" />
-
----
-
-
-
-##  How It Works (Block Flow)
-
-1. **AHB Master** initiates read/write with address and control signals.
-2. **AHB Slave Interface** captures these signals and registers them for the bridge.
-3. **Bridge FSM (in APB_Controller)**:
-   - Detects pending operations via handshaking flags.
-   - Initiates APB cycle (setup + access phases); waits for `PREADY`.
-   - Returns response back to the AHB side when complete.
-4. **APB Interface** coordinates actual transfer to APB peripheral.
-5. **Bridge Top** ties everything together, wiring signals and managing resets/clocks.
-   
- ---
 
 ## 🛠️ Tools & Technologies  
 
